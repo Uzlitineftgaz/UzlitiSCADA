@@ -55,7 +55,7 @@ const Datatypes = {
     /**
      * Float32
      */
-    Float32: _gen(4, 'FloatBE', 2),
+    Float32: _gen(4, 'FloatBE', 2,2),
     /**
      * Float64
      */
