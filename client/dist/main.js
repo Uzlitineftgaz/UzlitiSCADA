@@ -3971,6 +3971,8 @@ var ModbusTagType;
     ModbusTagType["Float32MLE"] = "Float32MLE";
     ModbusTagType["Int32MLE"] = "Int32MLE";
     ModbusTagType["UInt32MLE"] = "UInt32MLE";
+    ModbusTagType["Long"] = "Long";
+    ModbusTagType["String"] = "String";
     // String = 'String'
 })(ModbusTagType || (ModbusTagType = {}));
 var ModbusOptionType;
