@@ -289,6 +289,7 @@ function MODBUSclient(_data, _logger, _events) {
             var offset = parseInt(data.tags[sigid].address) - 1;   // because settings address from 1 to 65536 but communication start from 0
             value = deviceUtils.tagRawCalculator(value, data.tags[sigid]);
             var val = datatypes[data.tags[sigid].type].formatter(convertValue(value, data.tags[sigid].divisor, true));
+            var fuck=data.tags[sigid].type;
             if (type === ModbusTypes.RTU) {
                 const start = Date.now();
                 let now = start;
@@ -299,7 +300,7 @@ function MODBUSclient(_data, _logger, _events) {
                 _checkWorking(true);
             }
             try {
-                await _writeMemory(parseInt(memaddr), offset, val).then(result => {
+                await _writeMemory(parseInt(memaddr), offset, val, fuck).then(result => {
                     logger.info(`'${data.name}' setValue(${sigid}, ${val})`, true);
                 }, reason => {
                     if (reason && reason.stack) {
@@ -473,7 +474,7 @@ function MODBUSclient(_data, _logger, _events) {
      * @param {*} start 
      * @param {*} value 
      */
-    var _writeMemory = function (memoryAddress, start, value) {
+    var _writeMemory = function (memoryAddress, start, value, fuck) {
         return new Promise((resolve, reject) => {
             if (memoryAddress === ModbusMemoryAddress.CoilStatus) {                      // Coil Status (Read/Write 000001-065536)
                 client.writeCoil(start, value).then(res => {
@@ -487,12 +488,23 @@ function MODBUSclient(_data, _logger, _events) {
             } else if (memoryAddress === ModbusMemoryAddress.InputRegisters) {          // Input Registers (Read  300001-365536)
                 reject();
             } else if (memoryAddress === ModbusMemoryAddress.HoldingRegisters) {        // Holding Registers (Read/Write  400001-465535)
-                client.writeRegister(start, value).then(res => {
-                    resolve();
-                }, reason => {
-                    console.error(reason);
-                    reject(reason);
-                });
+                console.log(fuck)
+                if (fuck.includes("Int")||fuck.includes("Bool")){
+                    client.writeRegister(start, value).then(res => {
+                        resolve();
+                    }, reason => {
+                        console.error(reason);
+                        reject(reason);
+                    });
+                } else {
+                    client.writeRegisters(start, value).then(res => {
+                        resolve();
+                    }, reason => {
+                        console.error(reason);
+                        reject(reason);
+                    });
+                }
+
             } else {
                 reject();
             }

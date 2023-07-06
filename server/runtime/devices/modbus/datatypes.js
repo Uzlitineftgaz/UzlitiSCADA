@@ -100,6 +100,11 @@ const Datatypes = {
     Float32MLE: _gen(4, 'FloatBE', 2, 2),
 
     /**
+     * Long
+     */
+    Long: _gen(4, 'Int32BE', 2, 2),
+
+    /**
      * String
      */
     String: {
