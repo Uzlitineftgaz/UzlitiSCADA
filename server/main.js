@@ -157,9 +157,9 @@ if (!fs.existsSync(settings.logDir)) {
 logger.init(settings.logDir);
 const version = FUXA.version();
 if (version.indexOf('beta') > 0) {
-    logger.warn('FUXA V.' + version);
+    logger.warn('UzlitiSCADA V.' + version);
 } else {
-    logger.info('FUXA V.' + version);
+    logger.info('UzlitiSCADA V.' + version);
 }
 
 // Check storage Database dir
@@ -213,7 +213,7 @@ settings.uiHost = settings.uiHost || "0.0.0.0";
 
 // Wait ending initialization 
 events.once('init-runtime-ok', function () {
-    logger.info('FUXA init in  ' + utils.endTime(startTime) + 'ms.');
+    logger.info('UzlitiSCADA init in  ' + utils.endTime(startTime) + 'ms.');
     startFuxa();
 });
 
@@ -223,9 +223,9 @@ try {
 } catch(err) {
     if (err.code == 'unsupported_version') {
         logger.error('Unsupported version of node.js:', process.version);
-        logger.error('FUXA requires node.js v6 or later');
+        logger.error('UzlitiSCADA requires node.js v6 or later');
     } else if (err.code == 'not_built') {
-        logger.error('FUXA has not been built. See README.md for details');
+        logger.error('UzlitiSCADA has not been built. See README.md for details');
     } else {
         logger.error('Failed to start server:');
         if (err.stack) {
@@ -361,6 +361,6 @@ process.on('SIGINT', function () {
     FUXA.stop().then(function() {
         process.exit();
     });
-    logger.info('FUXA end!');
+    logger.info('UzlitiSCADA end!');
     process.exit();
 });
