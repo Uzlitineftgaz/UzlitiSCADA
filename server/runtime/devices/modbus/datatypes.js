@@ -2,9 +2,9 @@
 function _gen(bytes, bFn, WordLen, swapType) {
     return {
         bytes,
-        parser: (buffer, offset = 0) => { 
+        parser: (buffer, offset = 0) => {
             _swap(buffer, swapType, offset);
-            return buffer['read' + bFn](offset) 
+            return buffer['read' + bFn](offset)
         },
         formatter: v => {
             var b = Buffer.allocUnsafe(bytes);//new Buffer(bytes);
@@ -20,7 +20,7 @@ function _swap(buffer, swapType, offset = 0) {
     if (swapType == 2) {
         var temp = buffer[offset + 0];
         buffer[offset + 0] = buffer[offset + 2]; buffer[offset + 2] = temp;
-        temp = buffer[offset + 1]; 
+        temp = buffer[offset + 1];
         buffer[offset + 1] = buffer[offset + 3];buffer[offset + 3] = temp;
     }
 }
@@ -60,7 +60,7 @@ const Datatypes = {
      * Float64
      */
     Float64: _gen(8, 'DoubleBE', 4),
-    
+
     /**
      * Int16LE
      */
@@ -85,7 +85,7 @@ const Datatypes = {
      * Float64LE
      */
     Float64LE: _gen(8, 'DoubleLE', 4),
-    
+
     /**
      * Int32MLE
      */

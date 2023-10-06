@@ -107,7 +107,7 @@ function Report(_property, _runtime) {
         return new Promise(async function (resolve, reject) {
             try {
                 let docDefinition = {...report.docproperty };
-                docDefinition['header'] = { text: 'UzlitiSCADA by frangoteam', style:[{fontSize: 6}]};
+                docDefinition['header'] = { text: 'UzlitiSCADA by Uzlititeam', style:[{fontSize: 6}]};
                 docDefinition['footer'] = function(currentPage, pageCount) { 
                     return { text: currentPage.toString() + ' / ' + pageCount, style:[{alignment: 'right', fontSize: 8}]} ; 
                 },                
@@ -275,7 +275,7 @@ function Report(_property, _runtime) {
                 });
                 let values = [];
                 const timeRange = _getDateRange(item.range);
-                const query = { from: timeRange.begin.getTime(), to: timeRange.end.getTime() };
+                const query = { start: timeRange.begin.getTime(), end: timeRange.end.getTime() };
                 await runtime.alarmsMgr.getAlarmsHistory(query).then(result => {
                     if (!result || !result.length) {
                         values = [Object.values(item.propertyText).map(col => { 

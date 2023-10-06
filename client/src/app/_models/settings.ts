@@ -7,14 +7,18 @@ export class AppSettings {
     secureEnabled = false;
     /** Expiration of authanticated token (15m)*/
     tokenExpiresIn = '1h';
+    /** authentication are valid only for edit mode */
+    secureOnlyEditor = false;
     /** Broadcast all tags, without check the frontend views */
-    broadcastAll = false;
+    broadcastAll = true;
     /** Smtp to send mails */
     smtp = new SmtpSettings();
     /** Daq store database */
     daqstore = new DaqStore();
     /** Alarms store settings */
     alarms = new AlarmsSettings();
+    /** Log Full enabled to log all setValue */
+    logFull = false;
 }
 
 export class SmtpSettings {

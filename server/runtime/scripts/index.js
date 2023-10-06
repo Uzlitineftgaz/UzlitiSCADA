@@ -184,7 +184,9 @@ function ScriptsManager(_runtime) {
         var sysFncs = {};
         sysFncs['$getTag'] = runtime.devices.getTagValue;
         sysFncs['$setTag'] = runtime.devices.setTagValue;
+        sysFncs['$getTagId'] = runtime.devices.getTagId;
         sysFncs['$setView'] = _setCommandView;
+        sysFncs['$enableDevice'] = runtime.devices.enableDevice;
         return sysFncs;
     }
 
@@ -214,12 +216,23 @@ function ScriptSchedule(script) {
     this.name = script.name;
     this.scheduling = script.scheduling;
     this.lastRun = 0;
+    this.created = new Date().getTime();
 
     this.isToRun = function(time) {
-        return (time - this.lastRun > this.scheduling.interval * 1000);
+        if (this.scheduling.mode === ScriptSchedulingMode.start) {
+            return !this.lastRun && (time - this.created > this.scheduling.interval * 1000);
+        } else { // this.scheduling.mode === ScriptSchedulingMode.interval
+            return (time - this.lastRun > this.scheduling.interval * 1000);
+        }
     }
 }
 
 const ScriptCommandEnum = {
     SETVIEW: 'SETVIEW',
+}
+
+const ScriptSchedulingMode = {
+    interval: 'interval',
+    start: 'start',
+    scheduling: 'scheduling',
 }

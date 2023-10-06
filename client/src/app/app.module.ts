@@ -26,7 +26,7 @@ import { ViewComponent } from './view/view.component';
 import { LogsViewComponent } from './logs-view/logs-view.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { EditorComponent, DialogDocProperty, DialogDocName, DialogNewDoc, DialogLinkProperty } from './editor/editor.component';
-import { LayoutPropertyComponent, DialogMenuItem } from './editor/layout-property/layout-property.component';
+import { LayoutPropertyComponent, DialogMenuItem, DialogHeaderItem } from './editor/layout-property/layout-property.component';
 import { PluginsComponent } from './editor/plugins/plugins.component';
 import { AppSettingsComponent } from './editor/app-settings/app-settings.component';
 import { SetupComponent } from './editor/setup/setup.component';
@@ -166,10 +166,19 @@ import { HeartbeatService } from './_services/heartbeat.service';
 import { RcgiService } from './_services/rcgi/rcgi.service';
 import { ToastNotifierService } from './_services/toast-notifier.service';
 import { MyFileService } from './_services/my-file.service';
+import { TagsIdsConfigComponent } from './editor/tags-ids-config/tags-ids-config.component';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+import { HtmlImageComponent } from './gauges/controls/html-image/html-image.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+    showDelay: 1000,
+    hideDelay: 1000,
+    touchendHideDelay: 1000,
+};
 
 @NgModule({
     declarations: [
@@ -188,10 +197,12 @@ export function createTranslateLoader(http: HttpClient) {
         DevicePropertyComponent,
         DeviceWebapiPropertyDialogComponent,
         LayoutPropertyComponent,
+        TagsIdsConfigComponent,
         PluginsComponent,
         AppSettingsComponent,
         SetupComponent,
         DialogMenuItem,
+        DialogHeaderItem,
         DeviceListComponent,
         DialogTagName,
         DeviceMapComponent,
@@ -211,6 +222,7 @@ export function createTranslateLoader(http: HttpClient) {
         HtmlChartComponent,
         HtmlGraphComponent,
         HtmlIframeComponent,
+        HtmlImageComponent,
         HtmlBagComponent,
         GaugeProgressComponent,
         GaugeSemaphoreComponent,
@@ -360,7 +372,8 @@ export function createTranslateLoader(http: HttpClient) {
         Define,
         AuthGuard,
         ToastNotifierService,
-        MyFileService
+        MyFileService,
+        {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}
     ],
     bootstrap: [AppComponent]
 })

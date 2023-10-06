@@ -443,20 +443,20 @@ export class DevicesUtils {
         device.enabled = items[3].toLowerCase() === 'true' ? true : false;
         device.type = <DeviceType>items[4];
         device.polling = parseInt(items[5]) || 1000,
-        device.property = <DeviceNetProperty> {
-            address: items[6],
-            port: items[7],
-            slot: items[8],
-            rack: items[9],
-            slaveid: items[10],
-            baudrate: items[11],
-            databits: items[12],
-            stopbits: items[13],
-            parity: items[14],
-            options: items[15],
-            method: items[16],
-            format: items[17]
-        };
+            device.property = <DeviceNetProperty> {
+                address: items[6],
+                port: items[7],
+                slot: items[8],
+                rack: items[9],
+                slaveid: items[10],
+                baudrate: items[11],
+                databits: items[12],
+                stopbits: items[13],
+                parity: items[14],
+                options: items[15],
+                method: items[16],
+                format: items[17]
+            };
         device.tags = {};
         return device;
     }
