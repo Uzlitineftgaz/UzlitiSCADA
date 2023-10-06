@@ -1,8 +1,8 @@
-![fuxa logo](/client/src/favicon.ico) 
+![fuxa logo](/client/src/favicon.ico)
 # FUXA
-FUXA is a web-based Process Visualization (SCADA/HMI/Dashboard) software. With FUXA you can create modern process visualizations with individual designs for your machines and real-time data display.
+UzlitiSCADA is a web-based Process Visualization (SCADA/HMI/Dashboard) software. With FUXA you can create modern process visualizations with individual designs for your machines and real-time data display.
 
-![fuxa editor](/screenshot/fuxa-editor.png) 
+![fuxa editor](/screenshot/fuxa-editor.png)
 
 ![fuxa ani](/screenshot/fuxa-ani.gif)
 
@@ -91,7 +91,6 @@ Please ensure you follow the coding standards used through-out the existing code
 ## Let us know!
 We’d be really happy if you send us your own shapes in order to collect a library to share it with others. Just send an email to 4frango@gmail.com and do let us know if you have any questions or suggestions regarding our work.
 
-## <a href="https://discord.gg/WZhxz9uHh4" target="_blank" > <img src="https://skillicons.dev/icons?i=discord" alt=""></a>
 
 ## License
 MIT.

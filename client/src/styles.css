@@ -287,7 +287,7 @@ app-root {
     text-indent: -9999px;
     width: 30px;
     height: 30px;
-    background: url(assets/images/logo.svg);
+    background: url(assets/images/neft.png);
     background-size: 30px 30px;
 }
 
@@ -553,11 +553,11 @@ app-root {
 }
 
 .my-form-field-link {
-    position:absolute; 
-    bottom: 0px; 
-    right: 0px; 
-    height: 28px; 
-    width: 28px; 
+    position:absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 28px;
+    width: 28px;
     border-radius: 2px 0px 0px 2px;
     background-color: var(--formInputBackground);
     color: var(--formInputColor);
@@ -835,7 +835,7 @@ mat-toolbar-row {
 }
 
 .dialog-title {
-    display:inline-block; 
+    display:inline-block;
     cursor:move;
     display: unset !important;
 }
@@ -859,12 +859,12 @@ mat-toolbar-row {
     cursor: pointer;
     border: 1px solid rgba(0, 0, 0, 0.1) !important;
     font-size: 13px;
-    padding: 5px 2px 6px 3px !important;    
+    padding: 5px 2px 6px 3px !important;
     color:gray;
 }
 
 .input-color input:focus {
-    padding: 5px 2px 6px 3px !important;    
+    padding: 5px 2px 6px 3px !important;
     /* background-color: white; */
     border: 1px solid var(--formInputBorderFocus);
 }

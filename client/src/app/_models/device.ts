@@ -201,17 +201,17 @@ export enum ModbusTagType {
     UInt32 = 'UInt32',
     Float32 = 'Float32',
     Float64 = 'Float64',
-    Int64 = 'Int64',
     Int16LE = 'Int16LE',
     UInt16LE = 'UInt16LE',
     Int32LE = 'Int32LE',
     UInt32LE = 'UInt32LE',
     Float32LE = 'Float32LE',
     Float64LE = 'Float64LE',
-    Int64LE = 'Int64LE',
     Float32MLE = 'Float32MLE',
     Int32MLE = 'Int32MLE',
-    UInt32MLE = 'UInt32MLE'
+    UInt32MLE = 'UInt32MLE',
+    Long = 'Long',
+    String = 'String'
     // String = 'String'
 }
 
@@ -443,20 +443,20 @@ export class DevicesUtils {
         device.enabled = items[3].toLowerCase() === 'true' ? true : false;
         device.type = <DeviceType>items[4];
         device.polling = parseInt(items[5]) || 1000,
-        device.property = <DeviceNetProperty> {
-            address: items[6],
-            port: items[7],
-            slot: items[8],
-            rack: items[9],
-            slaveid: items[10],
-            baudrate: items[11],
-            databits: items[12],
-            stopbits: items[13],
-            parity: items[14],
-            options: items[15],
-            method: items[16],
-            format: items[17]
-        };
+            device.property = <DeviceNetProperty> {
+                address: items[6],
+                port: items[7],
+                slot: items[8],
+                rack: items[9],
+                slaveid: items[10],
+                baudrate: items[11],
+                databits: items[12],
+                stopbits: items[13],
+                parity: items[14],
+                options: items[15],
+                method: items[16],
+                format: items[17]
+            };
         device.tags = {};
         return device;
     }
@@ -531,14 +531,11 @@ export class TagScale {
     rawHigh: number;
     scaledLow: number;
     scaledHigh: number;
-    dateTimeFormat: string;
 }
 
 export enum TagScaleModeType {
     undefined = 'device.tag-scale-mode-undefined',
     linear = 'device.tag-scale-mode-linear',
-    convertDateTime = 'device.tag-convert-datetime',
-    convertTickTime = 'device.tag-convert-ticktime',
 }
 
 export enum TagSystemType {
