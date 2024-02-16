@@ -113,7 +113,7 @@ export class ReportEditorComponent implements OnInit, AfterViewInit {
     getPdfContent(report: Report): Observable<Object>  {
         return new Observable((observer) => {
             let docDefinition = {...report.docproperty };
-            docDefinition['header'] = { text: 'FUXA by frangoteam', style:[{fontSize: 6}]};
+            docDefinition['header'] = { text: 'Scada by Uzlititeam', style:[{fontSize: 6}]};
             docDefinition['footer'] = (currentPage, pageCount) => ({ text: currentPage.toString() + ' / ' + pageCount, style:[{alignment: 'right', fontSize: 8}]});
             // first resolve async images from server
             this.checkImages(report.content.items.filter(item => item.type === this.itemChartType)).subscribe((images: ImageItem[] ) => {
