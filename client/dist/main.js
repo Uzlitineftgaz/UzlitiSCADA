@@ -33839,7 +33839,7 @@ let ReportEditorComponent = class ReportEditorComponent {
       let docDefinition = { ...report.docproperty
       };
       docDefinition['header'] = {
-        text: 'FUXA by frangoteam',
+        text: 'Scada by Uzlititeam',
         style: [{
           fontSize: 6
         }]
